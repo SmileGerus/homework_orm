@@ -1,4 +1,5 @@
 import sqlalchemy as sq
+from sqlalchemy import Column
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -41,8 +42,8 @@ class Stocks(Base):
     __tablename__ = 'stock'
 
     id = sq.Column(sq.Integer, primary_key=True)
-    id_shop = sq.Column(sq.Integer, sq.ForeignKey('shop.id'), nullable=True)
     id_book = sq.Column(sq.Integer, sq.ForeignKey('book.id'), nullable=True)
+    id_shop = sq.Column(sq.Integer, sq.ForeignKey('shop.id'), nullable=True)
     count = sq.Column(sq.Integer, nullable=True)
 
     shop = relationship(Shops, backref='stock')
